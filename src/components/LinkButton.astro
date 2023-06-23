@@ -1,0 +1,21 @@
+---
+interface Props {
+    title: string;
+    text: string;
+    copy?: string
+    link: string;
+    icon?: string;
+}
+
+const props = Astro.props;
+---
+
+<a href={props.link}>
+    <div
+        class="text-lg p-5 text-zinc-50 hover:skew-y-1 hover:text-zinc-950 w-96 mx-auto my-4 rounded shadow-sm hover:shadow-md bg-zinc-800 bg-gradient-to-r hover:bg-blue-400 hover:scale-105 transition-all"
+    >
+        <b>{props.title}</b> {props.copy ? "-" : ""} {props.copy}
+        <br />
+        {props.text}
+    </div>
+</a>
