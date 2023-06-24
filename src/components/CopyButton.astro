@@ -7,15 +7,20 @@ interface Props {
 }
 
 const props = Astro.props;
+const { copy } = props;
 ---
 
 <div
+    onclick=`
+navigator.clipboard.writeText('${copy}')
+`
     class="hover:cursor-grab"
 >
     <div
         class="text-lg p-5 text-zinc-50 hover:-skew-y-1 hover:text-zinc-950 w-96 mx-auto my-4 rounded shadow-sm hover:shadow-md bg-zinc-800 bg-gradient-to-r hover:bg-indigo-400 hover:scale-105 transition-all"
     >
-        <b>{props.title}</b> - {props.copy}
+        <slot class="float-left h-fit p-2"/>
+        <b>{props.title}</b> - <span id="copy-text">{props.copy}</span>
         <br />
         {props.text}
     </div>
